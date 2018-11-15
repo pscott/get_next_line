@@ -6,7 +6,7 @@
 /*   By: pscott <pscott@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 13:09:34 by pscott            #+#    #+#             */
-/*   Updated: 2018/11/13 18:04:55 by pscott           ###   ########.fr       */
+/*   Updated: 2018/11/14 17:23:02 by pscott           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,15 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-int		get_next_line(const int fd, char **line);
+typedef struct		s_fdlist
+{
+	char			*c;
+	int				fd;
+	struct s_fdlist	*next;
+	struct s_fdlist *prev;
+
+}					t_fdlist;
+
+int					get_next_line(const int fd, char **line);
+
 #endif
