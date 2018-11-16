@@ -6,7 +6,7 @@
 /*   By: pscott <pscott@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 16:55:36 by pscott            #+#    #+#             */
-/*   Updated: 2018/11/15 16:00:15 by pscott           ###   ########.fr       */
+/*   Updated: 2018/11/16 10:24:11 by pscott           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ static t_fdlist	*ft_dlistnew(int fd)
 	return (i);
 }
 
-static int		helper(char **line, t_fdlist *save)
+static int		return_val(char **line, t_fdlist *save)
 {
 	char			*e;
 	char			*tmp;
 
-	e = ft_strchr(save->c, '\n');
+	e = ft_strchr(save->c, ENDL);
 	if (e != NULL)
 	{
 		*e = 0;
@@ -114,5 +114,5 @@ int				get_next_line(const int fd, char **line)
 	}
 	if (check < 0)
 		return (-1);
-	return (helper(line, save));
+	return (return_val(line, save));
 }

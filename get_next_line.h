@@ -6,14 +6,17 @@
 /*   By: pscott <pscott@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 13:09:34 by pscott            #+#    #+#             */
-/*   Updated: 2018/11/14 17:23:02 by pscott           ###   ########.fr       */
+/*   Updated: 2018/11/16 10:28:06 by pscott           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # define BUFF_SIZE 32
+# define ENDL '\n'
 # include "libft.h"
+# include <sys/types.h>
+# include <sys/uio.h>
 # include <unistd.h>
 # include <stdlib.h>
 
