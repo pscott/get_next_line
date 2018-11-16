@@ -6,7 +6,7 @@
 /*   By: pscott <pscott@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 16:55:36 by pscott            #+#    #+#             */
-/*   Updated: 2018/11/16 10:24:11 by pscott           ###   ########.fr       */
+/*   Updated: 2018/11/16 10:44:33 by pscott           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static t_fdlist	*getfd(t_fdlist *save, int fd)
 int				get_next_line(const int fd, char **line)
 {
 	static t_fdlist	*save;
-	char			buf[BUFF_SIZE + 1];
+	char			*buf;
 	int				check;
 
 	if (line == NULL || BUFF_SIZE < 1 || fd < 0)
@@ -107,6 +107,8 @@ int				get_next_line(const int fd, char **line)
 	if (save == NULL)
 		save = ft_dlistnew(fd);
 	*line = 0;
+	if (!(buf = (char *)malloc(sizeof(char) * (BUFF_SIZE + 1))))
+		return (-1);
 	while ((check = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[check] = 0;
@@ -114,5 +116,6 @@ int				get_next_line(const int fd, char **line)
 	}
 	if (check < 0)
 		return (-1);
+	free(buf);
 	return (return_val(line, save));
 }
